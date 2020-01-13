@@ -22,12 +22,12 @@ class FirstView extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: _height * 0.10),
                 Text(
-                  "Bem Vindo",
+                  "Bem Vindo".toUpperCase(),
                   style: TextStyle(fontSize: 44, color: Colors.white),
                 ),
                 SizedBox(height: _height * 0.10),
                 AutoSizeText(
-                  "Let’s start planning your next trip",
+                  "Compre Seus Produtos Aqui !".toUpperCase(),
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -44,7 +44,7 @@ class FirstView extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 30.0, right: 30.0),
                     child: Text(
-                      "Crie Sua Conta",
+                      "Crie Sua Conta".toUpperCase(),
                       style: TextStyle(
                         color: primaryColor,
                         fontSize: 28,
@@ -56,10 +56,10 @@ class FirstView extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) => CustomDialog(
-                        title: "Would you like to create a free account?",
+                        title: "Criar Conta",
                         description:
-                            "With an account, your data will be securely saved, allowing you to access it from multiple devices.",
-                        primaryButtonText: "Create My Account",
+                            "Com uma conta, seus dados serão salvos com segurança, permitindo que você os acesse a partir de vários dispositivos.",
+                        primaryButtonText: "criar uma conta",
                         primaryButtonRoute: "/signUp",
                         secondaryButtonText: "Maybe Later",
                         secondaryButtonRoute: "/home",
@@ -70,7 +70,7 @@ class FirstView extends StatelessWidget {
                 SizedBox(height: _height * 0.05),
                 FlatButton(
                   child: Text(
-                    "Sign In",
+                    "Logar",
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                   onPressed: () {

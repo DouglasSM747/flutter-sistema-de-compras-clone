@@ -58,4 +58,14 @@ class Products {
     longDescription = json['longDescription'];
     name = json['name'];
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['sku'] = this.sku;
+    data['salePrice'] = this.salePrice;
+    data['image'] = this.image;
+    data['longDescription'] = this.longDescription;
+    data['name'] = this.name;
+    return data;
+  }
 }

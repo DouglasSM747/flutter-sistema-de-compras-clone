@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -25,10 +26,16 @@ class AuthService {
   // Email & Password Sign In
   Future<String> signInWithEmailAndPassword(
       String email, String password) async {
+    //trim retorna uma nova string sem espacos em branco a direita ou esquerda
     return (await _firebaseAuth.signInWithEmailAndPassword(
-            email: email, password: password))
+            email: email.trim(), password: password.trim()))
         .user
         .uid;
+  }
+
+  someMethod() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    print(user.email);
   }
 
   // Sign Out

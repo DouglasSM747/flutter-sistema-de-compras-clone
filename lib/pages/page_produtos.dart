@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:appteste/API/produtos.dart';
+import 'package:appteste/ProdutosJson/produtos.dart';
 import 'package:appteste/models/api.dart';
 import 'package:appteste/models/cart.dart';
 import 'package:flutter/material.dart';
@@ -26,9 +26,9 @@ class _ProdutosPageState extends State<ProdutosPage> {
   var newTaskCtrl = TextEditingController(); //pegar a entrada
   var indexPagina = 0;
   var produtos = new List<Products>();
-
+  Cart cart = new Cart();
   adicionarProduto(produto) {
-    Cart.addInCart(produto);
+    cart.addInCart(produto);
   }
 
   _getProdutos(nameProd) {
@@ -67,7 +67,7 @@ class _ProdutosPageState extends State<ProdutosPage> {
               icon: Icon(Icons.search),
               onPressed: () {
                 setState(() {
-                  _getProdutos(newTaskCtrl.value.text);
+                  _getProdutos(newTaskCtrl.value.text.trim());
                   newTaskCtrl.clear();
                   FocusScope.of(context).requestFocus(FocusNode());
                 });
@@ -86,7 +86,6 @@ class _ProdutosPageState extends State<ProdutosPage> {
       itemBuilder: (context, index) {
         return ListTile(
           onTap: () {
-            // showProduto(context, produtos[index]);
             showDialog(
                 context: context,
                 barrierDismissible: true,
@@ -140,7 +139,7 @@ class _ProdutosPageState extends State<ProdutosPage> {
                               Padding(
                                 padding: EdgeInsets.all(10.0),
                                 child: Text(
-                                  "Valor: " +
+                                  "Valor: \$ " +
                                       (produtos[index].salePrice.toString()),
                                   style: TextStyle(
                                       fontSize: 14.0,
@@ -200,7 +199,6 @@ class _ProdutosPageState extends State<ProdutosPage> {
                                 ),
                                 onPressed: () {
                                   adicionarProduto(produtos[index]);
-
                                   Navigator.of(context).pop();
                                 },
                                 color: Colors.transparent,
@@ -211,7 +209,7 @@ class _ProdutosPageState extends State<ProdutosPage> {
           },
           title: Text(
             produtos[index].name ?? 'Sem Nome',
-            style: TextStyle(color: Colors.black, fontSize: 20),
+            style: TextStyle(color: Colors.black, fontSize: 15),
           ),
           leading: CircleAvatar(
             backgroundImage: NetworkImage(produtos[index].image),
@@ -223,119 +221,4 @@ class _ProdutosPageState extends State<ProdutosPage> {
       },
     );
   }
-}
-
-Future<bool> showProduto(context, review) {
-  return showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return Dialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            child: Container(
-                height: 450.0,
-                width: 600.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Stack(
-                      children: <Widget>[
-                        Container(
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10.0),
-                                topRight: Radius.circular(10.0),
-                              ),
-                              color: Colors.lightBlue,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  review.image,
-                                ),
-                                fit: BoxFit.contain,
-                              )),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        review.name.toString().substring(0, 20),
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.w300),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        "Valor: " + (review.salePrice.toString()),
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.w300),
-                      ),
-                    ),
-                    Container(
-                      height: 100,
-                      width: 250,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              review.longDescription.toString() ??
-                                  'Sem Descricao',
-                              style: TextStyle(
-                                fontFamily: 'Quicksand',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 15.0),
-                    FlatButton(
-                      child: Center(
-                        child: Text(
-                          'Cancelar',
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontSize: 14.0,
-                              color: Colors.blue),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      color: Colors.transparent,
-                    ),
-                    FlatButton(
-                      child: Center(
-                        child: Text(
-                          'Adicionar Ao Carinho',
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontSize: 14.0,
-                              color: Colors.blue),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      color: Colors.transparent,
-                    ),
-                  ],
-                )));
-      });
 }

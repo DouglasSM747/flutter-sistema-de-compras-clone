@@ -5,8 +5,6 @@ import 'package:appteste/services/auth_service.dart';
 import 'package:appteste/widgets/provider_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'models/Trip.dart';
-
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -24,7 +22,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final newTrip = new Trip(null, null, null, null, null);
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -55,16 +52,16 @@ class _HomeState extends State<Home> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text("Home"),
+              icon: new Icon(Icons.search),
+              title: new Text("Buscar"),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.explore),
-              title: new Text("Explore"),
+              icon: new Icon(Icons.shopping_cart),
+              title: new Text("Carrinho"),
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.history),
-              title: new Text("Past Trips"),
+              title: new Text("Historico"),
             ),
           ]),
     );

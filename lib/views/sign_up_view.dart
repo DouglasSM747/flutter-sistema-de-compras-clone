@@ -27,7 +27,7 @@ class _SignUpViewState extends State<SignUpView> {
 
   void switchFormState(String state) {
     formKey.currentState.reset();
-    if (state == "signUp") {
+    if (state == "Logar") {
       setState(() {
         authFormType = AuthFormType.signUp;
       });
@@ -93,7 +93,7 @@ class _SignUpViewState extends State<SignUpView> {
   AutoSizeText buildHeaderText() {
     String _headerText;
     if (authFormType == AuthFormType.signUp) {
-      _headerText = "Create New Account";
+      _headerText = "Criar Uma Nova Conta";
     } else {
       _headerText = "Sign In";
     }
