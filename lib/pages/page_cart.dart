@@ -34,15 +34,17 @@ class _MyPageCartState extends State<MyPageCart> {
       if (listaProdutos.length > 0) {
         String texto = "";
         for (int i = 0; i < listaProdutos.length; i++) {
-          texto += listaProdutos[i].name.toString() +
-              '\n' +
+          texto += 'Nome: ' +
+              listaProdutos[i].name.toString() +
+              '\n\n' +
+              'Valor Produto: ' +
               listaProdutos[i].salePrice.toStringAsFixed(2) +
-              '\n';
+              '\n\n';
         }
         cart.addInHistorico('Valor Total: \$ ' +
             valorTotal.toStringAsFixed(2) +
             '\n' +
-            'Produtos: \n' +
+            'Produtos: \n\n' +
             texto);
         cart.resetCart();
         setState(() {

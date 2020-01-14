@@ -64,6 +64,7 @@ class _MyPageHistoryState extends State<MyPageHistory> {
                 .map((String compra) => Card(
                       child: Column(children: <Widget>[
                         ListTile(
+                          leading: Icon(Icons.share),
                           title: Text('Log De Compra'),
                           subtitle: Text(
                             compra.toUpperCase(),
