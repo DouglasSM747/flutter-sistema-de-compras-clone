@@ -45,12 +45,10 @@ class _SignUpViewState extends State<SignUpView> {
       final auth = Provider.of(context).auth;
       if (authFormType == AuthFormType.signIn) {
         String uid = await auth.signInWithEmailAndPassword(_email, _password);
-        print("Signed In with ID $uid");
         Navigator.of(context).pushReplacementNamed('/home');
       } else {
         String uid =
             await auth.createUserWithEmailAndPassword(_email, _password, _name);
-        print("Signed up with New ID $uid");
         Navigator.of(context).pushReplacementNamed('/home');
       }
     } catch (e) {
@@ -162,13 +160,13 @@ class _SignUpViewState extends State<SignUpView> {
     String _switchButtonText, _newFormState, _submitButtonText;
 
     if (authFormType == AuthFormType.signIn) {
-      _switchButtonText = "Create New Account";
+      _switchButtonText = "Criar Nova Conta";
       _newFormState = "signUp";
-      _submitButtonText = "Sign In";
+      _submitButtonText = "Logar";
     } else {
-      _switchButtonText = "Have an Account? Sign In";
+      _switchButtonText = "Ja Possui Conta ? Logar";
       _newFormState = "signIn";
-      _submitButtonText = "Sign Up";
+      _submitButtonText = "Criar Conta";
     }
 
     return [

@@ -61,7 +61,7 @@ class FirstView extends StatelessWidget {
                             "Com uma conta, seus dados serão salvos com segurança, permitindo que você os acesse a partir de vários dispositivos.",
                         primaryButtonText: "criar uma conta",
                         primaryButtonRoute: "/signUp",
-                        secondaryButtonText: "Maybe Later",
+                        secondaryButtonText: " Lembrar Depois",
                         secondaryButtonRoute: "/home",
                       ),
                     );
