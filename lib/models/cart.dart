@@ -15,14 +15,16 @@ class Cart {
       List<Products> respostaLista =
           list.map((json) => Products.fromJson(json)).toList();
       produtosInCart = respostaLista;
-    });
-    getHistorico().then((data) {
-      var list = data as List<String>;
-      historicoCompras = list;
+      getHistorico().then((data) {
+        if (data != null) {
+          var list = data as List<String>;
+          historicoCompras = list;
+        }
+      });
     });
   }
-  addInHistorico(texto) {
-    historicoCompras.add(texto);
+  addInHistorico(String texto) async {
+    historicoCompras.insert(0, texto);
     saveHistorico();
   }
 
@@ -38,8 +40,7 @@ class Cart {
 
   addInCart(prod) async {
     //add os valores do storage
-    produtosInCart.add(prod);
-
+    produtosInCart.insert(0, prod);
     saveStorageCart();
   }
 

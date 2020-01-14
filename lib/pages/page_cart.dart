@@ -39,7 +39,7 @@ class _MyPageCartState extends State<MyPageCart> {
               listaProdutos[i].salePrice.toStringAsFixed(2) +
               '\n';
         }
-        cart.addInHistorico('Valor Total: ' +
+        cart.addInHistorico('Valor Total: \$ ' +
             valorTotal.toStringAsFixed(2) +
             '\n' +
             'Produtos: \n' +
@@ -47,7 +47,7 @@ class _MyPageCartState extends State<MyPageCart> {
         cart.resetCart();
         setState(() {
           valorTotal = 0;
-          listaProdutos = new List<Products>();
+          listaProdutos.clear();
         });
       }
     }

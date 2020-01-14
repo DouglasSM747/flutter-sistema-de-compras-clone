@@ -68,7 +68,8 @@ class _MyPageHistoryState extends State<MyPageHistory> {
                           subtitle: Text(
                             compra.toUpperCase(),
                           ),
-                          onTap: () => share(context, 'Log Da Compra', compra),
+                          onTap: () =>
+                              share(context, compra, '[Log Da Compra]'),
                         ),
                       ]),
                     ))
