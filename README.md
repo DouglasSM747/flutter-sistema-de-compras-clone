@@ -1,5 +1,5 @@
-# appteste
-
+## Informações
+Sistema de compras clone do projeto: https://github.com/DouglasSM747/Ionic-sistema-de-compras
 A new Flutter project.
 
 ## Getting Started
